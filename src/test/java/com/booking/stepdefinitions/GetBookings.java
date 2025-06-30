@@ -45,7 +45,10 @@ public class GetBookings {
         Assert.assertEquals(name,"Erica");
         String lastname = res.jsonPath().get("bookings[0].lastname").toString();
         Assert.assertEquals(lastname,"Bowthorpe");
-
+        String status = res.jsonPath().get("bookings[0].depositpaid").toString();
+        Assert.assertEquals(status,"false");
+        String checkin = res.jsonPath().get("bookings[0].bookingdates.checkin").toString();
+        Assert.assertEquals(checkin,"2026-02-02");
     }
 
 }
