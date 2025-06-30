@@ -1,3 +1,7 @@
+#   The Swagger documentation for the two endpoints you will be testing can be found at:
+#•	Booking endpoint: https://automationintesting.online/booking/swagger-ui/index.html
+#•	Optionally, you also have the Authentication endpoint: https://automationintesting.online/auth/swagger-ui/index.html
+
 
 @bookingFeature
 Feature: Test the booking functionality

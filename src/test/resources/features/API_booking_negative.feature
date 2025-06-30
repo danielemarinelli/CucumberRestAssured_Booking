@@ -12,7 +12,7 @@ Feature: Test the booking functionality for negative scenarios
 @get2
   Scenario: Send a request without roomID
 
-    When I send a request to view the bookings without the roomid
+    When I send a request to view the bookings with invalid roomid
     Then I should receive an error badrequest with code 400
 
 

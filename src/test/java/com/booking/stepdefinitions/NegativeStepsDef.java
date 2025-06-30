@@ -49,13 +49,22 @@ public class NegativeStepsDef {
 
 
 
-    @When("I send a request to view the bookings without the roomid")
-    public void i_send_a_request_to_view_the_bookings_without_the_roomid() {
-
+    @When("I send a request to view the bookings with invalid roomid")
+    public void i_send_a_request_to_view_the_bookings_with_invalid_roomid() {
+        String tokenValue = context.getToken();
+        res= given()
+                .cookie("token", tokenValue)
+                .log().all()
+                .get(URL.get_url_to_retrive_booking_room);
     }
     @Then("I should receive an error badrequest with code {int}")
     public void i_should_receive_an_error_badrequest_with_code(Integer int1) {
+        res.then().statusCode(400)
+                .body("error", equalTo("Room ID is required"))
+                .log().all();
 
+        String errormsg = res.jsonPath().get("error").toString();
+        Assert.assertEquals(errormsg,"Room ID is required");
     }
 
 
