@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/Welcome1",
+  "definitions": {
+    "Welcome1": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "bookings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Booking"
+          }
+        }
+      },
+      "required": [
+        "bookings"
+      ],
+      "title": "Welcome1"
+    },
+    "Booking": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "bookingid": {
+          "type": "integer"
+        },
+        "roomid": {
+          "type": "integer"
+        },
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "depositpaid": {
+          "type": "boolean"
+        },
+        "bookingdates": {
+          "$ref": "#/definitions/Bookingdates"
+        }
+      },
+      "required": [
+        "bookingdates",
+        "bookingid",
+        "depositpaid",
+        "firstname",
+        "lastname",
+        "roomid"
+      ],
+      "title": "Booking"
+    },
+    "Bookingdates": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "checkin": {
+          "type": "string",
+          "format": "date"
+        },
+        "checkout": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "required": [
+        "checkin",
+        "checkout"
+      ],
+      "title": "Bookingdates"
+    }
+  }
+}

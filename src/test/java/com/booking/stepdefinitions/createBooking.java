@@ -6,6 +6,7 @@ import com.support.SupportLibrary;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.http.ContentType;
+import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import org.junit.Assert;
 
@@ -64,5 +65,11 @@ public class createBooking {
     }
 
 
-
+    @Then("The JSON schema is as expected and validated")
+    public void theJSONSchemaIsAsExpectedAndValidated() {
+        System.out.println("DEVELOP the step...........");
+        res.then()
+                .assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("SchemaBooking.json"))
+                .statusCode(200);
+    }
 }

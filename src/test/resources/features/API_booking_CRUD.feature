@@ -11,6 +11,7 @@ Feature: Test the booking functionality
   Scenario Outline: Create a booking
     When I make a reservation with <roomid>, <lastname>, <firstname>, <depositpaid>, <checkin>, <checkout>
     Then I receive the reservation and the process ends successfully
+    Then The JSON schema is as expected and validated
     Examples:
       | roomid | lastname | firstname | depositpaid | checkin    | checkout   |  |
       | 1000   | Marino   | Daniele   | false       | 2025-07-02 | 2025-07-07 |  |
