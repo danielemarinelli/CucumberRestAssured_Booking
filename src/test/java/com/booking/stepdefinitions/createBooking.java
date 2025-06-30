@@ -61,13 +61,14 @@ public class createBooking {
         Assert.assertEquals("Daniele", name);
         String lastname = res.jsonPath().get("bookings[0].lastname").toString();
         Assert.assertEquals("Marino", lastname);
-
+        String checkout = res.jsonPath().get("bookings[0].bookingdates.checkout").toString();
+        Assert.assertEquals("2025-07-07", checkout);
     }
 
 
     @Then("The JSON schema is as expected and validated")
     public void theJSONSchemaIsAsExpectedAndValidated() {
-        System.out.println("DEVELOP the step...........");
+
         res.then()
                 .assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("SchemaBooking.json"))
                 .statusCode(200);

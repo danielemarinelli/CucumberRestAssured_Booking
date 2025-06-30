@@ -29,6 +29,8 @@ public class deleteBooking {
     }
     @Then("The reservation should be successfully deleted")
     public void the_reservation_should_be_successfully_deleted() {
+
         res.then().statusCode(200);
-    }
+
+          }
 }
