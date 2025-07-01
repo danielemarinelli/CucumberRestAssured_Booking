@@ -52,8 +52,8 @@ public class updateBooking {
                 .cookie("token", tokenValue)
                 .body(updateInfoClientJSONformat)
                 .put(URL.put_url_to_update_booking_reservation+"/{bookingid}");
-                //.put("https://automationintesting.online/api/booking/4");
-        System.out.println(res.getBody().asString());
+        System.out.println("check what we pass on body: --> "+updateInfoClientJSONformat);
+        System.out.println("checking body response after passing put: --> "+res.getBody().asString());
 
         res.then()
                 .statusCode(200);

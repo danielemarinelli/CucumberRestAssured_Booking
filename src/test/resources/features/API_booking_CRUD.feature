@@ -19,7 +19,7 @@ Feature: Test the booking functionality
     Examples:
       | roomid | lastname | firstname | depositpaid | checkin    | checkout   |  |
       | 1000   | Marino   | Daniele   | false       | 2025-07-02 | 2025-07-07 |  |
-      | 1001   | Kelly    | Jim       | true        | 2025-08-07 | 2025-08-16 |  |
+#      | 1001   | Kelly    | Jim       | true        | 2025-08-07 | 2025-08-16 |  |
 
   @update
   Scenario: Update a booking

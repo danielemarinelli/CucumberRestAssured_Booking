@@ -43,8 +43,8 @@ public class ClientInformation {
         updated_info.put("lastname", "Love");
         updated_info.put("depositpaid", false);
         Map<String, Object> dates = new HashMap<String, Object>();
-        dates.put("checkin", "2025-06-25");
-        dates.put("checkout", "2025-07-02");
+        dates.put("checkin", "2025-07-02");
+        dates.put("checkout", "2025-07-07");
         updated_info.put("bookingdates", dates);
 
         return updated_info;
