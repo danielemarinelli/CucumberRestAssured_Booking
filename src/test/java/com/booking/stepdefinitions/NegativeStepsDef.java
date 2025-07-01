@@ -87,4 +87,22 @@ public class NegativeStepsDef {
         Assert.assertEquals("0",bodySize);
         System.out.println("Body response is EMPTY, as expected");
     }
+
+    @When("I send a request to view the bookings with alphabetic roomid")
+    public void iSendARequestToViewTheBookingsWithAlphabeticRoomid() {
+        String tokenValue = context.getToken();
+        res= given()
+                .cookie("token", tokenValue)
+                .queryParam("roomid","abcdef")
+                .log().all()
+                .get(URL.get_url_to_retrive_booking_room);
+    }
+
+    @Then("I should receive an internal server error")
+    public void iShouldReceiveAnInternalServerError() {
+        res.then().statusCode(500)
+                .log().all();
+
+        System.out.println("Internal Server Error is present, inserted bad roomID");
+    }
 }
