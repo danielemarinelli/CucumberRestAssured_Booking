@@ -17,6 +17,11 @@ Feature: Test the booking functionality for negative scenarios
 @get3
   Scenario: Send a request with non existing roomID
 
-    When I send a request to view the bookings with invalid roomid
+    When I send a request to view the bookings with non existing roomid
     Then I should receive an empty list with success request
 
+@get4
+  Scenario: Send a request with invalid roomID
+
+    When I send a request to view the bookings with alphabetic roomid
+    Then I should receive an internal server error

@@ -68,8 +68,8 @@ public class NegativeStepsDef {
         Assert.assertEquals(errormsg,"Room ID is required");
     }
 
-    @When("I send a request to view the bookings with invalid roomid")
-    public void i_send_a_request_to_view_the_bookings_with_invalid_roomid() {
+    @When("I send a request to view the bookings with non existing roomid")
+    public void i_send_a_request_to_view_the_bookings_with_non_existing_roomid() {
         String tokenValue = context.getToken();
         res= given()
                 .cookie("token", tokenValue)
