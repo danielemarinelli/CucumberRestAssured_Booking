@@ -3,6 +3,7 @@ import com.api.URL;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Given;
+import io.restassured.http.ContentType;
 import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
 import org.junit.Assert;
@@ -49,8 +50,8 @@ public class NegativeStepsDef {
 
 
 
-    @When("I send a request to view the bookings with invalid roomid")
-    public void i_send_a_request_to_view_the_bookings_with_invalid_roomid() {
+    @When("I send a request to view the bookings without roomid")
+    public void i_send_a_request_to_view_the_bookings_without_roomid() {
         String tokenValue = context.getToken();
         res= given()
                 .cookie("token", tokenValue)
@@ -67,6 +68,23 @@ public class NegativeStepsDef {
         Assert.assertEquals(errormsg,"Room ID is required");
     }
 
+    @When("I send a request to view the bookings with invalid roomid")
+    public void i_send_a_request_to_view_the_bookings_with_invalid_roomid() {
+        String tokenValue = context.getToken();
+        res= given()
+                .cookie("token", tokenValue)
+                .queryParam("roomid",9999)
+                .log().all()
+                .get(URL.get_url_to_retrive_booking_room);
+    }
 
+    @Then("I should receive an empty list with success request")
+    public void iShouldReceiveAnEmptyListWithSuccessRequest() {
+        res.then().statusCode(200)
+                .log().all();
 
+        String bodySize = res.jsonPath().get("bookings.size()").toString();
+        Assert.assertEquals("0",bodySize);
+        System.out.println("Body response is EMPTY, as expected");
+    }
 }
